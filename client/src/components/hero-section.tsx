@@ -6,47 +6,52 @@ import tabrizPhoto from "@assets/MyPC3_1750782360229.png";
 
 export function HeroSection() {
   const [displayedText, setDisplayedText] = useState("");
-  const [currentPhase, setCurrentPhase] = useState(0);
+  const [phraseIndex, setPhraseIndex] = useState(0);
+  const [charIndex, setCharIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
   
-  const textPhases = [
+  const phrases = [
     "Hello",
     "I am Tabriz Latifov",
-    "Software Engineer",
-    "Team Leader & Instructor"
+    "Full Stack Software Engineer",
+    "Building Scalable Solutions"
   ];
 
   useEffect(() => {
     let timeoutId: NodeJS.Timeout;
     
-    const typeText = () => {
-      const currentText = textPhases[currentPhase];
-      const currentLength = displayedText.length;
+    const type = () => {
+      const currentPhrase = phrases[phraseIndex];
       
-      if (currentLength < currentText.length) {
-        // Typing phase
-        setDisplayedText(currentText.slice(0, currentLength + 1));
-        timeoutId = setTimeout(typeText, 80);
+      if (isDeleting) {
+        setCharIndex(prev => prev - 1);
       } else {
-        // Pause before next phase or restart
-        timeoutId = setTimeout(() => {
-          if (currentPhase < textPhases.length - 1) {
-            setCurrentPhase(prev => prev + 1);
-            setDisplayedText("");
-          } else {
-            // Restart animation after longer pause
-            timeoutId = setTimeout(() => {
-              setCurrentPhase(0);
-              setDisplayedText("");
-            }, 3000);
-          }
-        }, 2500);
+        setCharIndex(prev => prev + 1);
+      }
+
+      setDisplayedText(currentPhrase.substring(0, isDeleting ? charIndex - 1 : charIndex + 1));
+
+      // Typing completed
+      if (!isDeleting && charIndex === currentPhrase.length - 1) {
+        setIsDeleting(true);
+        timeoutId = setTimeout(type, 1500); // wait before deleting
+      }
+      // Deleting completed
+      else if (isDeleting && charIndex === 0) {
+        setIsDeleting(false);
+        setPhraseIndex((phraseIndex + 1) % phrases.length);
+        setCharIndex(0);
+        timeoutId = setTimeout(type, 300); // wait before typing next
+      }
+      else {
+        timeoutId = setTimeout(type, isDeleting ? 50 : 100); // typing or deleting speed
       }
     };
 
-    typeText();
+    timeoutId = setTimeout(type, 100);
     
     return () => clearTimeout(timeoutId);
-  }, [currentPhase, displayedText]);
+  }, [charIndex, isDeleting, phraseIndex, phrases]);
 
   const scrollToContact = () => {
     const element = document.querySelector("#contact");
@@ -70,10 +75,10 @@ export function HeroSection() {
           </div>
 
           <div className="mb-6">
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold h-16 flex items-center justify-center">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold h-16 flex items-center justify-center font-mono">
               <span className="text-gradient typing-text">
                 {displayedText}
-                <span className="animate-pulse text-primary">|</span>
+                <span className="typing-cursor">|</span>
               </span>
             </h1>
           </div>
