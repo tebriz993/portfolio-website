@@ -81,6 +81,53 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
+
+  .typing-text {
+    position: relative;
+    display: inline-block;
+    min-height: 1.2em;
+  }
+
+  .hero-profile {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .hero-profile:hover {
+    transform: scale(1.05);
+  }
+
+  .hero-profile::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, hsl(var(--primary)), hsl(var(--accent)), hsl(var(--primary)));
+    background-size: 200% 200%;
+    animation: gradient-rotate 3s ease-in-out infinite;
+    z-index: -1;
+  }
+
+  @keyframes gradient-rotate {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out;
+  }
 }
 
 @layer utilities {
