@@ -22,14 +22,9 @@ export function HeroSection() {
             <img
               src={tabrizPhoto}
               alt="Tabriz Latifov"
-              className="rounded-full mx-auto w-32 h-32 object-cover border-4 border-background"
+              className="rounded-full mx-auto w-64 h-64 object-cover border-4 border-background"
             />
           </div>
-
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">
-            <span className="text-foreground">Tabriz</span>{" "}
-            <span className="text-gradient">Latifov</span>
-          </h1>
 
           {/* --- DƏYİŞİKLİK BURADADIR --- */}
           {/* 2. Köhnə <Badge> komponentini silib, yerinə <TypeAnimation> əlavə edirik */}
