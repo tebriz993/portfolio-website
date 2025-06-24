@@ -11,8 +11,8 @@ export function HeroSection() {
   const textPhases = [
     "Hello",
     "I am Tabriz Latifov",
-    "Full Stack Software Engineer",
-    "Building Scalable Solutions"
+    "Software Engineer",
+    "Team Leader & Instructor"
   ];
 
   useEffect(() => {
@@ -60,7 +60,7 @@ export function HeroSection() {
       <div className="container-custom">
         <div className="max-w-4xl mx-auto text-center">
           <div className="mb-8 animate-fade-in-up">
-            <div className="relative mx-auto w-40 h-40 hero-profile">
+            <div className="relative mx-auto w-32 h-32 md:w-36 md:h-36 hero-profile">
               <img
                 src={tabrizPhoto}
                 alt="Tabriz Latifov"
@@ -70,7 +70,7 @@ export function HeroSection() {
           </div>
 
           <div className="mb-6">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold h-20 flex items-center justify-center">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold h-16 flex items-center justify-center">
               <span className="text-gradient typing-text">
                 {displayedText}
                 <span className="animate-pulse text-primary">|</span>
