@@ -9,9 +9,10 @@ export function HeroSection() {
   const [currentPhase, setCurrentPhase] = useState(0);
   
   const textPhases = [
-    "Hi",
+    "Hello",
     "I am Tabriz Latifov",
-    "I am Full Stack Software Engineer"
+    "Full Stack Software Engineer",
+    "Building Scalable Solutions"
   ];
 
   useEffect(() => {
@@ -24,7 +25,7 @@ export function HeroSection() {
       if (currentLength < currentText.length) {
         // Typing phase
         setDisplayedText(currentText.slice(0, currentLength + 1));
-        timeoutId = setTimeout(typeText, 100);
+        timeoutId = setTimeout(typeText, 80);
       } else {
         // Pause before next phase or restart
         timeoutId = setTimeout(() => {
@@ -32,11 +33,13 @@ export function HeroSection() {
             setCurrentPhase(prev => prev + 1);
             setDisplayedText("");
           } else {
-            // Restart animation
-            setCurrentPhase(0);
-            setDisplayedText("");
+            // Restart animation after longer pause
+            timeoutId = setTimeout(() => {
+              setCurrentPhase(0);
+              setDisplayedText("");
+            }, 3000);
           }
-        }, 2000);
+        }, 2500);
       }
     };
 
@@ -67,20 +70,27 @@ export function HeroSection() {
           </div>
 
           <div className="mb-6">
-            <h1 className="text-5xl md:text-6xl font-bold h-20 flex items-center justify-center">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold h-20 flex items-center justify-center">
               <span className="text-gradient typing-text">
                 {displayedText}
-                <span className="animate-pulse">|</span>
+                <span className="animate-pulse text-primary">|</span>
               </span>
             </h1>
           </div>
 
-          <Badge variant="secondary" className="mb-8 text-lg px-6 py-3 bg-primary/10 text-primary border-primary/20">
-            Full Stack Software Engineer
-          </Badge>
+          <div className="mb-8 space-y-4">
+            <Badge variant="secondary" className="text-lg px-6 py-3 bg-primary/10 text-primary border-primary/20">
+              Full Stack Software Engineer
+            </Badge>
+            <div className="flex flex-wrap justify-center gap-2">
+              <Badge variant="outline" className="text-sm">Motorola Solutions</Badge>
+              <Badge variant="outline" className="text-sm">Team Leader</Badge>
+              <Badge variant="outline" className="text-sm">Instructor</Badge>
+            </div>
+          </div>
 
           <p className="text-lg mb-8 max-w-2xl mx-auto text-muted-foreground leading-relaxed">
-            Passionate about building scalable solutions and currently leading development teams at Motorola Solutions while sharing knowledge as an instructor. Strong background in algorithmic thinking and problem-solving.
+            Passionate about architecting enterprise solutions and mentoring the next generation of developers. Currently leading development teams at Motorola Solutions while delivering cutting-edge microservices architecture.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
