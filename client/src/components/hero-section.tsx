@@ -1,11 +1,12 @@
+// client/src/components/hero-section.tsx
+
+// 1. Lazımi komponentləri və kitabxananı import edirik
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { Github, Linkedin, Mail, Download } from "lucide-react";
-import { TypeAnimation } from 'react-type-animation';
+import { TypeAnimation } from "react-type-animation"; // YENİ IMPORT
 import tabrizPhoto from "@assets/MyPC3_1750782360229.png";
 
 export function HeroSection() {
-
   const scrollToContact = () => {
     const element = document.querySelector("#contact");
     if (element) {
@@ -17,55 +18,53 @@ export function HeroSection() {
     <section className="pt-24 pb-16 gradient-bg">
       <div className="container-custom">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="mb-12 animate-fade-in-up">
-            <div className="relative mx-auto w-56 h-56 md:w-64 md:h-64 hero-profile">
-              <img
-                src={tabrizPhoto}
-                alt="Tabriz Latifov"
-                className="rounded-full w-full h-full object-cover border-4 border-background relative z-10"
-              />
-            </div>
-          </div>
-
-          <div className="mb-6 h-16">
-            <TypeAnimation
-              sequence={[
-                'Hello', // Types 'Hello'
-                1000,    // Waits 1s
-                'I am Tabriz Latifov', // Types 'I am Tabriz Latifov'
-                1500,    // Waits 1.5s
-                'Full Stack Software Engineer', // Types 'Full Stack Software Engineer'
-                1500,    // Waits 1.5s
-                'Building Scalable Solutions', // Types 'Building Scalable Solutions'
-                2000,    // Waits 2s
-              ]}
-              wrapper="span"
-              speed={50}
-              className="text-3xl md:text-4xl lg:text-5xl font-bold text-gradient"
-              repeat={Infinity}
+          <div className="mb-8">
+            <img
+              src={tabrizPhoto}
+              alt="Tabriz Latifov"
+              className="rounded-full mx-auto w-32 h-32 object-cover border-4 border-background"
             />
           </div>
 
-          <div className="mb-8 space-y-4">
-            <Badge variant="secondary" className="text-lg px-6 py-3 bg-primary/10 text-primary border-primary/20">
-              Full Stack Software Engineer
-            </Badge>
-            <div className="flex flex-wrap justify-center gap-2">
-              <Badge variant="outline" className="text-sm">Motorola Solutions</Badge>
-              <Badge variant="outline" className="text-sm">Team Leader</Badge>
-              <Badge variant="outline" className="text-sm">Instructor</Badge>
-            </div>
+          <h1 className="text-5xl md:text-6xl font-bold mb-6">
+            <span className="text-foreground">Tabriz</span>{" "}
+            <span className="text-gradient">Latifov</span>
+          </h1>
+
+          {/* --- DƏYİŞİKLİK BURADADIR --- */}
+          {/* 2. Köhnə <Badge> komponentini silib, yerinə <TypeAnimation> əlavə edirik */}
+          {/* Mətn dəyişdikcə səhifənin "atlamaması" üçün ona bir min-height veririk */}
+          <div className="mb-4 text-xl md:text-2xl font-semibold min-h-[64px] flex items-center justify-center">
+            <TypeAnimation
+              sequence={[
+                'Hello',
+                1000,
+                'I am Tabriz Latifov',
+                1500,
+                'Full Stack Software Engineer',
+                1500,
+                'Building Scalable Solutions',
+                2000,
+              ]}
+              wrapper="span"
+              speed={50}
+              repeat={Infinity}
+            />
           </div>
+          {/* --- DƏYİŞİKLİK BİTDİ --- */}
+
 
           <p className="text-lg mb-8 max-w-2xl mx-auto text-muted-foreground leading-relaxed">
-            Passionate about architecting enterprise solutions and mentoring the next generation of developers. Currently leading development teams at Motorola Solutions while delivering cutting-edge microservices architecture.
+            Responsible, hardworking, and creative engineer with strong
+            algorithmic thinking and problem-solving skills. Currently leading
+            teams and building microservices at Motorola Solutions.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-            <Button onClick={scrollToContact} size="lg" className="px-8 bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 shadow-lg">
+            <Button onClick={scrollToContact} size="lg" className="px-8">
               Get In Touch
             </Button>
-            <Button variant="outline" size="lg" className="px-8 border-primary/30 hover:bg-primary/10">
+            <Button variant="outline" size="lg" className="px-8">
               <Download className="mr-2 h-4 w-4" />
               Download CV
             </Button>
