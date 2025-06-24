@@ -34,11 +34,11 @@ export function HeroSection() {
               sequence={[
                 'Hi, I\'m Tabriz.',
                 1000,
-                'A Full Stack & DevOps Engineer.', 
+                'Full Stack Software Engineer.',
                 1000,
-                'I build modern web applications.', 
+                'I build modern web applications.',
                 1000,
-                'And architect scalable cloud solutions.', 
+                'And architect scalable cloud solutions.',
                 1500,
               ]}
               wrapper="span"
