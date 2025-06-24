@@ -6,9 +6,6 @@ import tabrizPhoto from "@assets/MyPC3_1750782360229.png";
 
 export function HeroSection() {
   const [displayedText, setDisplayedText] = useState("");
-  const [phraseIndex, setPhraseIndex] = useState(0);
-  const [charIndex, setCharIndex] = useState(0);
-  const [isDeleting, setIsDeleting] = useState(false);
   
   const phrases = [
     "Hello",
@@ -18,40 +15,41 @@ export function HeroSection() {
   ];
 
   useEffect(() => {
-    let timeoutId: NodeJS.Timeout;
+    let phraseIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
     
     const type = () => {
       const currentPhrase = phrases[phraseIndex];
       
       if (isDeleting) {
-        setCharIndex(prev => prev - 1);
+        charIndex--;
       } else {
-        setCharIndex(prev => prev + 1);
+        charIndex++;
       }
 
-      setDisplayedText(currentPhrase.substring(0, isDeleting ? charIndex - 1 : charIndex + 1));
+      setDisplayedText(currentPhrase.substring(0, charIndex));
+
+      let timeSpeed = isDeleting ? 50 : 100;
 
       // Typing completed
-      if (!isDeleting && charIndex === currentPhrase.length - 1) {
-        setIsDeleting(true);
-        timeoutId = setTimeout(type, 1500); // wait before deleting
+      if (!isDeleting && charIndex === currentPhrase.length) {
+        isDeleting = true;
+        timeSpeed = 1500; // wait before deleting
       }
       // Deleting completed
       else if (isDeleting && charIndex === 0) {
-        setIsDeleting(false);
-        setPhraseIndex((phraseIndex + 1) % phrases.length);
-        setCharIndex(0);
-        timeoutId = setTimeout(type, 300); // wait before typing next
+        isDeleting = false;
+        phraseIndex = (phraseIndex + 1) % phrases.length;
+        timeSpeed = 300; // wait before typing next
       }
-      else {
-        timeoutId = setTimeout(type, isDeleting ? 50 : 100); // typing or deleting speed
-      }
+
+      setTimeout(type, timeSpeed);
     };
 
-    timeoutId = setTimeout(type, 100);
-    
-    return () => clearTimeout(timeoutId);
-  }, [charIndex, isDeleting, phraseIndex, phrases]);
+    // Start the animation
+    type();
+  }, []);
 
   const scrollToContact = () => {
     const element = document.querySelector("#contact");
@@ -69,7 +67,7 @@ export function HeroSection() {
               <img
                 src={tabrizPhoto}
                 alt="Tabriz Latifov"
-                className="rounded-full shadow-2xl w-full h-full object-cover border-4 border-background relative z-10"
+                className="rounded-full w-full h-full object-cover border-4 border-background relative z-10"
               />
             </div>
           </div>
