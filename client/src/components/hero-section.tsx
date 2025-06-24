@@ -32,14 +32,14 @@ export function HeroSection() {
           <div className="mb-4 text-xl md:text-2xl font-semibold min-h-[64px] flex items-center justify-center">
             <TypeAnimation
               sequence={[
-                'Hello',
-                1000,
-                'I am Tabriz Latifov',
+                'Hello, I\'m Tabriz.', 
                 1500,
-                'Full Stack Software Engineer',
+                'Full Stack Software & DevOps Engineer.', 
                 1500,
-                'Building Scalable Solutions',
-                2000,
+                'I build modern web applications.',
+                1500,
+                'And architect scalable cloud solutions.',
+                2500,
               ]}
               wrapper="span"
               speed={50}
