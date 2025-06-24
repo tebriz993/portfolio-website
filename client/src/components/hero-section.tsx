@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Github, Linkedin, Mail, Download } from "lucide-react";
+import tabrizPhoto from "@assets/MyPC3_1750782360229.png";
 
 export function HeroSection() {
   const scrollToContact = () => {
@@ -16,8 +17,8 @@ export function HeroSection() {
         <div className="max-w-4xl mx-auto text-center">
           <div className="mb-8">
             <img
-              src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600"
-              alt="Professional developer workspace"
+              src={tabrizPhoto}
+              alt="Tabriz Latifov"
               className="rounded-2xl shadow-2xl mx-auto w-32 h-32 object-cover border-4 border-background"
             />
           </div>
@@ -32,9 +33,7 @@ export function HeroSection() {
           </Badge>
 
           <p className="text-lg mb-8 max-w-2xl mx-auto text-muted-foreground leading-relaxed">
-            Responsible, hardworking, and creative engineer with strong
-            algorithmic thinking and problem-solving skills. Currently leading
-            teams and building microservices at Motorola Solutions.
+            Hi, I am Tabriz Latifov, a responsible and hardworking Full Stack Software Engineer with strong algorithmic thinking and problem-solving skills. I'm passionate about building scalable solutions and currently leading development teams at Motorola Solutions while sharing my knowledge as an instructor.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
