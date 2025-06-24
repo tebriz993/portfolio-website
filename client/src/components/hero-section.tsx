@@ -1,55 +1,10 @@
-import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Github, Linkedin, Mail, Download } from "lucide-react";
+import { TypeAnimation } from 'react-type-animation';
 import tabrizPhoto from "@assets/MyPC3_1750782360229.png";
 
 export function HeroSection() {
-  const [displayedText, setDisplayedText] = useState("");
-  
-  const phrases = [
-    "Hello",
-    "I am Tabriz Latifov",
-    "Full Stack Software Engineer",
-    "Building Scalable Solutions"
-  ];
-
-  useEffect(() => {
-    let phraseIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-    
-    const type = () => {
-      const currentPhrase = phrases[phraseIndex];
-      
-      if (isDeleting) {
-        charIndex--;
-      } else {
-        charIndex++;
-      }
-
-      setDisplayedText(currentPhrase.substring(0, charIndex));
-
-      let timeSpeed = isDeleting ? 50 : 100;
-
-      // Typing completed
-      if (!isDeleting && charIndex === currentPhrase.length) {
-        isDeleting = true;
-        timeSpeed = 1500; // wait before deleting
-      }
-      // Deleting completed
-      else if (isDeleting && charIndex === 0) {
-        isDeleting = false;
-        phraseIndex = (phraseIndex + 1) % phrases.length;
-        timeSpeed = 300; // wait before typing next
-      }
-
-      setTimeout(type, timeSpeed);
-    };
-
-    // Start the animation
-    type();
-  }, []);
 
   const scrollToContact = () => {
     const element = document.querySelector("#contact");
@@ -72,13 +27,23 @@ export function HeroSection() {
             </div>
           </div>
 
-          <div className="mb-6">
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold h-16 flex items-center justify-center font-mono">
-              <span className="text-gradient typing-text">
-                {displayedText}
-                <span className="typing-cursor">|</span>
-              </span>
-            </h1>
+          <div className="mb-6 h-16">
+            <TypeAnimation
+              sequence={[
+                'Hello', // Types 'Hello'
+                1000,    // Waits 1s
+                'I am Tabriz Latifov', // Types 'I am Tabriz Latifov'
+                1500,    // Waits 1.5s
+                'Full Stack Software Engineer', // Types 'Full Stack Software Engineer'
+                1500,    // Waits 1.5s
+                'Building Scalable Solutions', // Types 'Building Scalable Solutions'
+                2000,    // Waits 2s
+              ]}
+              wrapper="span"
+              speed={50}
+              className="text-3xl md:text-4xl lg:text-5xl font-bold text-gradient"
+              repeat={Infinity}
+            />
           </div>
 
           <div className="mb-8 space-y-4">
