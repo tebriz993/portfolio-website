@@ -83,8 +83,10 @@ export function HeroSection() {
               <Linkedin className="h-6 w-6" />
             </a>
             <a
-              href="mailto:latifovtebriz@gmail.com"
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=latifovtebriz@gmail.com"
               className="text-muted-foreground hover:text-primary transition-colors"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <Mail className="h-6 w-6" />
             </a>
