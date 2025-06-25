@@ -1,13 +1,27 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Github, ExternalLink, Loader2 } from "lucide-react";
+import { Github, ExternalLink, Loader2, ShoppingCart } from "lucide-react";
 import { useGitHubRepos } from "@/hooks/use-github";
+import ecommerceImage from "@assets/image_1750883066100.png";
+
+const featuredProjects = [
+  {
+    id: "ecommerce-microservice",
+    name: "ECommerceMicroservice",
+    description: "Modern microservices-based e-commerce platform with distributed architecture, message queuing, and search capabilities.",
+    image: ecommerceImage,
+    technologies: ["C#", ".NET", "REST API", "RabbitMQ", "Elasticsearch", "Redis"],
+    github: "https://github.com/tebriz993/ECommerceMicroservice",
+    demo: null,
+    featured: true
+  }
+];
 
 export function ProjectsSection() {
   const { data: repos, isLoading, error } = useGitHubRepos();
 
-  const displayProjects = repos?.slice(0, 6) || [];
+  const displayProjects = repos?.slice(0, 5) || [];
 
   return (
     <section id="projects" className="section-padding bg-muted/50">
@@ -38,8 +52,63 @@ export function ProjectsSection() {
             </div>
           )}
 
-          {displayProjects.length > 0 && (
+          {(featuredProjects.length > 0 || displayProjects.length > 0) && (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {/* Featured Projects */}
+              {featuredProjects.map((project) => (
+                <Card
+                  key={project.id}
+                  className="hover:shadow-lg transition-all duration-300 hover:scale-105 border-primary/20"
+                >
+                  <CardContent className="p-0">
+                    <div className="h-48 relative rounded-t-lg overflow-hidden">
+                      <img
+                        src={project.image}
+                        alt={project.name}
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute top-2 right-2">
+                        <Badge className="bg-primary/90">Featured</Badge>
+                      </div>
+                    </div>
+                    <div className="p-6">
+                      <h3 className="text-xl font-bold mb-2">{project.name}</h3>
+                      <p className="text-muted-foreground mb-4 line-clamp-2">
+                        {project.description}
+                      </p>
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {project.technologies.map((tech) => (
+                          <Badge key={tech} variant="secondary">
+                            {tech}
+                          </Badge>
+                        ))}
+                      </div>
+                      <div className="flex space-x-2">
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-muted-foreground hover:text-primary transition-colors"
+                        >
+                          <Github className="h-5 w-5" />
+                        </a>
+                        {project.demo && (
+                          <a
+                            href={project.demo}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-muted-foreground hover:text-primary transition-colors"
+                          >
+                            <ExternalLink className="h-5 w-5" />
+                          </a>
+                        )}
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+
+              {/* GitHub Projects */}
               {displayProjects.map((project) => (
                 <Card
                   key={project.id}

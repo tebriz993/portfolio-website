@@ -6,7 +6,8 @@ import {
   SiTailwindcss, SiDocker, SiKubernetes, SiAmazon, 
   SiPostgresql, SiMongodb, SiOracle, SiMysql,
   SiRabbitmq, SiRedis, SiGraphql, SiSwagger, SiPostman,
-  SiTerraform, SiPrometheus, SiGrafana
+  SiTerraform, SiPrometheus, SiGrafana,
+  SiApachekafka, SiElasticsearch
 } from "react-icons/si";
 
 const skillCategories = [
@@ -21,6 +22,7 @@ const skillCategories = [
       { name: "RabbitMQ", level: 75 },
       { name: "Redis", level: 70 },
       { name: "GraphQL/Swagger/Postman", level: 90 },
+      { name: "Modular Architectures", level: 95 },
     ],
   },
   {
@@ -68,13 +70,16 @@ const technologies = [
   { name: "Kubernetes", icon: SiKubernetes, color: "text-blue-500" },
   { name: "AWS", icon: SiAmazon, color: "text-orange-500" },
   { name: "PostgreSQL", icon: SiPostgresql, color: "text-blue-700" },
-  { name: "MongoDB", icon: SiMongodb, color: "text-green-600" },
+  { name: "MS SQL Server", icon: SiMysql, color: "text-red-600" },
   { name: "RabbitMQ", icon: SiRabbitmq, color: "text-orange-600" },
   { name: "Redis", icon: SiRedis, color: "text-red-600" },
   { name: "GraphQL", icon: SiGraphql, color: "text-pink-600" },
   { name: "Swagger", icon: SiSwagger, color: "text-green-500" },
   { name: "Terraform", icon: SiTerraform, color: "text-purple-600" },
   { name: "Grafana", icon: SiGrafana, color: "text-orange-500" },
+  { name: "Azure", icon: Cloud, color: "text-blue-500" },
+  { name: "Apache Kafka", icon: SiApachekafka, color: "text-black" },
+  { name: "ElasticSearch", icon: SiElasticsearch, color: "text-yellow-600" },
 ];
 
 export function SkillsSection() {
