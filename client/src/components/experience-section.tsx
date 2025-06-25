@@ -4,12 +4,22 @@ import { Badge } from "@/components/ui/badge";
 const experiences = [
   {
     title: "Full Stack Software Engineer",
-    company: "Motorola Solutions (Remote)",
-    location: "Chicago, USA",
+    company: "Freelancer",
+    location: "Remote",
     period: "05/2025 - Present",
     description:
       "Working on enterprise-level software solutions using C#, .NET, and Microservices architecture for mission-critical applications.",
     technologies: ["C#", ".NET", "Microservices"],
+    current: true,
+  },
+  {
+    title: "Software Developer (C#, .NET)",
+    company: "Crocusoft (Part-time)",
+    location: "Remote",
+    period: "12/2024 - 05/2025",
+    description:
+      "Developing software solutions using C# and .NET technologies, participating in various company projects and implementations.",
+    technologies: ["C#", ".NET", "Software Development"],
     current: true,
   },
   {
@@ -23,10 +33,20 @@ const experiences = [
     current: false,
   },
   {
+    title: "Middle ICT On-site Technical Support Engineer (COP29)",
+    company: "KRONOS ICT TEAM, Australia team (Full-time)",
+    location: "Baku, Azerbaijan",
+    period: "09/2024 - 12/2024",
+    description:
+      "Provided technical support and infrastructure management for COP29 conference, ensuring seamless ICT operations.",
+    technologies: ["Technical Support", "Infrastructure", "ICT Management"],
+    current: false,
+  },
+  {
     title: "Back-end Instructor",
     company: "Software Village & CodeWorld.az",
     location: "Azerbaijan",
-    period: "03/2024 - Present",
+    period: "08/2024 - Present",
     description:
       "Teaching advanced C# and .NET concepts to aspiring developers, focusing on clean code principles and best practices.",
     technologies: ["C#", ".NET", "Teaching", "Mentoring"],
@@ -36,7 +56,7 @@ const experiences = [
     title: "Full Stack Software Developer",
     company: "TIC (Remote)",
     location: "USA",
-    period: "09/2023 - 12/2024",
+    period: "12/2023 - 12/2024",
     description:
       "Developed and maintained full-stack applications using modern web technologies and cloud services.",
     technologies: ["Full Stack", "Cloud Services", "Web Development"],
