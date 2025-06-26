@@ -50,9 +50,7 @@ export function HeroSection() {
 
 
           <p className="text-lg mb-8 max-w-2xl mx-auto text-muted-foreground leading-relaxed">
-            Responsible, hardworking, and creative engineer with strong
-            algorithmic thinking and problem-solving skills. Currently leading
-            teams and building microservices at Motorola Solutions.
+            A skilled software engineer dedicated to building modern, scalable web solutions. I leverage strong algorithmic thinking to tackle complex challenges and deliver high-quality code.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">

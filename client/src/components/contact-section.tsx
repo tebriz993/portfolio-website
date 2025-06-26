@@ -6,6 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Mail, Phone, Linkedin } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import emailjs from '@emailjs/browser';
 
 export function ContactSection() {
   const [formData, setFormData] = useState({
@@ -28,16 +29,42 @@ export function ContactSection() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    // Replit-dəki "Secrets"-dən dəyərləri oxuyuruq
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for your message. I'll get back to you soon.",
-    });
+    // Açarların mövcud olub-olmadığını yoxlayaq
+    if (!serviceId || !templateId || !publicKey) {
+      console.error("EmailJS environment variables are not set!");
+      toast({
+        title: "Configuration Error",
+        description: "The email service is not configured correctly. Please contact the administrator.",
+        variant: "destructive",
+      });
+      setIsSubmitting(false);
+      return;
+    }
 
-    setFormData({ name: "", email: "", subject: "", message: "" });
-    setIsSubmitting(false);
+    try {
+      await emailjs.send(serviceId, templateId, formData, publicKey);
+
+      toast({
+        title: "Message Sent!",
+        description: "Thank you for your message. I'll get back to you soon.",
+      });
+
+      setFormData({ name: "", email: "", subject: "", message: "" });
+    } catch (error) {
+      console.error('Failed to send email:', error);
+      toast({
+        title: "Error!",
+        description: "Something went wrong. Please check your details or try again later.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -69,7 +96,7 @@ export function ContactSection() {
                   <div>
                     <p className="font-medium">Email</p>
                     <a
-                      href="https://mail.google.com/mail/?view=cm&fs=1&to=latifovtebriz@gmail.com"
+                      href="mailto:latifovtebriz@gmail.com"
                       className="text-muted-foreground hover:text-primary transition-colors"
                       target="_blank"
                       rel="noopener noreferrer"

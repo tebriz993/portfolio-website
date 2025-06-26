@@ -1,79 +1,151 @@
+import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Github, ExternalLink, Loader2, ShoppingCart } from "lucide-react";
-import { useGitHubRepos } from "@/hooks/use-github";
+import { Github, ExternalLink, ChevronDown, ChevronUp } from "lucide-react";
+
+// Original project image
 import ecommerceImage from "@assets/image_1750883066100.png";
+
+// New project images
+import JobSearchAppImage from "@assets/JobSearchApp.png";
+import SoftwareVillageImage from "@assets/SoftwareVillage.png";
+import DendClubImage from "@assets/DendClub.png";
+import ECommerceAppImage from "@assets/ECommerceApp.png";
+import LawProjectImage from "@assets/LawProject.png";
+import ShopECommerceImage from "@assets/ShopECommerce.png";
 
 const featuredProjects = [
   {
     id: "ecommerce-microservice",
     name: "ECommerceMicroservice",
-    description: "Modern microservices-based e-commerce platform with distributed architecture, message queuing, and search capabilities.",
+    description: "Modern microservices-based e-commerce platform with distributed architecture.",
     image: ecommerceImage,
     technologies: ["C#", ".NET", "REST API", "RabbitMQ", "Elasticsearch", "Redis"],
     github: "https://github.com/tebriz993/ECommerceMicroservice",
     demo: null,
+    featured: false,
+    status: "Pending" 
+  },
+  {
+    id: "job-search-app",
+    name: "JobSearchApp",
+    description: "A comprehensive platform for searching and managing job applications.",
+    image: JobSearchAppImage,
+    technologies: ["C#", ".NET", "RestAPI", "Clean Architecture"],
+    github: "https://github.com/tebriz993/JobSearch-App",
+    demo: null,
     featured: true
-  }
+  },
+  {
+    id: "software-village",
+    name: "SoftwareVillage",
+    description: "A project for the Software Village course, demonstrating core software principles.",
+    image: SoftwareVillageImage,
+    technologies: ["C#", ".NET Core MVC", "MVVM", "MVC Architecture"],
+    github: "https://github.com/tebriz993/SoftwareVillage",
+    demo: null,
+    featured: true
+  },
+  {
+    id: "dendclub",
+    name: "DendClub",
+    description: "A healthcare system project designed to manage patient and clinical data efficiently.",
+    image: DendClubImage,
+    technologies: ["C#", ".NET", "RestAPI", "JavaScript", "TypeScript", "React.js"],
+    github: "https://github.com/tebriz993/dendclub",
+    demo: null,
+    featured: true
+  },
+  {
+    id: "ecommerce-app",
+    name: "ECommerceApp",
+    description: "A full-featured e-commerce application built with an N-layer architecture.",
+    image: ECommerceAppImage,
+    technologies: ["C#", ".NET", ".NET MVC", "MVVM", "N-layer Architecture", "jQuery"],
+    github: "https://github.com/tebriz993/ECommerceApp",
+    demo: null,
+    featured: true
+  },
+  {
+    id: "law-project",
+    name: "LawProject",
+    description: "A specialized application designed to assist legal professionals and law firms.",
+    image: LawProjectImage,
+    technologies: ["C#", ".NET Core MVC", "MVVM"],
+    github: "https://github.com/tebriz993/Law_Project",
+    demo: null,
+    featured: true
+  },
+  {
+    id: "shop-ecommerce",
+    name: "ShopECommerce",
+    description: "A corporate e-commerce solution with Onion Architecture and Elasticsearch.",
+    image: ShopECommerceImage,
+    technologies: ["C#", ".NET", "RestAPI", "Onion Architecture", "ElasticSearch"],
+    github: "https://github.com/tebriz993/ShopECommerce",
+    demo: null,
+    featured: true
+  },
 ];
 
 export function ProjectsSection() {
-  const { data: repos, isLoading, error } = useGitHubRepos();
-
-  const displayProjects = repos?.slice(0, 5) || [];
+  const [isExpanded, setIsExpanded] = useState(true);
 
   return (
     <section id="projects" className="section-padding bg-muted/50">
       <div className="container-custom">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
-            Featured Projects
-          </h2>
+          <div
+            className="flex items-center justify-center mb-12 cursor-pointer"
+            onClick={() => setIsExpanded(!isExpanded)}
+            role="button"
+            aria-expanded={isExpanded}
+            aria-controls="projects-grid"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-center">
+              Featured Projects
+            </h2>
+            <span className="ml-4">
+              {isExpanded ? <ChevronUp className="h-7 w-7" /> : <ChevronDown className="h-7 w-7" />}
+            </span>
+          </div>
 
-          {isLoading && (
-            <div className="flex justify-center items-center py-16">
-              <Loader2 className="h-8 w-8 animate-spin" />
-              <span className="ml-2">Loading projects from GitHub...</span>
-            </div>
-          )}
-
-          {error && (
-            <div className="text-center py-16">
-              <p className="text-muted-foreground mb-4">
-                Unable to load GitHub repositories at the moment.
-              </p>
-              <Button
-                variant="outline"
-                onClick={() => window.location.reload()}
-              >
-                Try Again
-              </Button>
-            </div>
-          )}
-
-          {(featuredProjects.length > 0 || displayProjects.length > 0) && (
+          <div
+            id="projects-grid"
+            className="overflow-hidden transition-all duration-700 ease-in-out"
+            style={{ maxHeight: isExpanded ? '5000px' : '0px' }}
+          >
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {/* Featured Projects */}
               {featuredProjects.map((project) => (
                 <Card
                   key={project.id}
-                  className="hover:shadow-lg transition-all duration-300 hover:scale-105 border-primary/20"
+                  className="hover:shadow-lg transition-all duration-300 hover:scale-105 border-primary/20 flex flex-col"
                 >
-                  <CardContent className="p-0">
+                  <CardContent className="p-0 flex flex-col flex-grow">
                     <div className="h-48 relative rounded-t-lg overflow-hidden">
                       <img
                         src={project.image}
                         alt={project.name}
                         className="w-full h-full object-cover"
                       />
-                      <div className="absolute top-2 right-2">
-                        <Badge className="bg-primary/90">Featured</Badge>
+                      <div className="absolute top-2 right-2 flex flex-col items-end gap-y-2">
+                        {project.featured && (
+                          <Badge className="bg-black/40 text-white/90 backdrop-blur-sm border-white/20">
+                            Featured
+                          </Badge>
+                        )}
+                        {project.status && (
+                          <Badge variant="secondary" className="bg-blue-900 text-blue-100 border-blue-700">
+                            {project.status}
+                          </Badge>
+                        )}
                       </div>
                     </div>
-                    <div className="p-6">
+
+                    <div className="p-6 flex flex-col flex-grow">
                       <h3 className="text-xl font-bold mb-2">{project.name}</h3>
-                      <p className="text-muted-foreground mb-4 line-clamp-2">
+                      <p className="text-muted-foreground mb-4 line-clamp-3">
                         {project.description}
                       </p>
                       <div className="flex flex-wrap gap-2 mb-4">
@@ -83,7 +155,7 @@ export function ProjectsSection() {
                           </Badge>
                         ))}
                       </div>
-                      <div className="flex space-x-2">
+                      <div className="mt-auto flex space-x-2 pt-4">
                         <a
                           href={project.github}
                           target="_blank"
@@ -107,62 +179,8 @@ export function ProjectsSection() {
                   </CardContent>
                 </Card>
               ))}
-
-              {/* GitHub Projects */}
-              {displayProjects.map((project) => (
-                <Card
-                  key={project.id}
-                  className="hover:shadow-lg transition-all duration-300 hover:scale-105"
-                >
-                  <CardContent className="p-0">
-                    <div className="h-48 bg-gradient-to-br from-primary to-blue-600 relative rounded-t-lg">
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <Github className="h-16 w-16 text-white/80" />
-                      </div>
-                    </div>
-                    <div className="p-6">
-                      <h3 className="text-xl font-bold mb-2">{project.name}</h3>
-                      <p className="text-muted-foreground mb-4 line-clamp-2">
-                        {project.description || "No description available"}
-                      </p>
-                      <div className="flex justify-between items-center">
-                        <div className="flex flex-wrap gap-2">
-                          {project.language && (
-                            <Badge variant="outline">{project.language}</Badge>
-                          )}
-                          {project.topics?.slice(0, 2).map((topic) => (
-                            <Badge key={topic} variant="secondary">
-                              {topic}
-                            </Badge>
-                          ))}
-                        </div>
-                        <div className="flex space-x-2">
-                          <a
-                            href={project.html_url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-muted-foreground hover:text-primary transition-colors"
-                          >
-                            <Github className="h-5 w-5" />
-                          </a>
-                          {project.homepage && (
-                            <a
-                              href={project.homepage}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-muted-foreground hover:text-primary transition-colors"
-                            >
-                              <ExternalLink className="h-5 w-5" />
-                            </a>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
             </div>
-          )}
+          </div>
 
           <div className="text-center mt-12">
             <Button asChild variant="outline" size="lg">
