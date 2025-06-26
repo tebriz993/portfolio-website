@@ -11,7 +11,7 @@ const featuredProjects = [
     name: "ECommerceMicroservice",
     description: "Modern microservices-based e-commerce platform with distributed architecture, message queuing, and search capabilities.",
     image: ecommerceImage,
-    technologies: ["C#", ".NET", "Microservice","REST API", "RabbitMQ", "Elasticsearch", "Redis"],
+    technologies: ["C#", ".NET", "REST API", "RabbitMQ", "Elasticsearch", "Redis"],
     github: "https://github.com/tebriz993/ECommerceMicroservice",
     demo: null,
     featured: true
