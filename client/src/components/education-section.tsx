@@ -113,6 +113,15 @@ const achievements = [
     downloadName: "Coursera-CPlusPlus.pdf",
   },
   {
+    title: "Data Structure and OOP",
+    description: "Certificate",
+    organization: "Programming Academy",
+    period: "Completed",
+    type: "certificate",
+    downloadLink: "/assets/Data-Structure-Certificate.pdf",
+    downloadName: "Data-Structure-Certificate.pdf",
+  },
+  {
     title: "Junction X Hackhathon",
     description: "Participated",
     organization: "Europe's largest hackathon",

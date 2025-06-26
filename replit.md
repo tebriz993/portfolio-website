@@ -112,13 +112,14 @@ The application follows a full-stack monorepo architecture with clear separation
 
 ## Changelog
 - June 26, 2025. Enhanced certificate download functionality
-  - Added download functionality for 6 certificates and documents:
+  - Added download functionality for 7 certificates and documents:
     * "Will artificial intelligence replace humans?" → Article PDF
     * "JavaScript Certificate" → CISCO Certificate PNG
     * "Algorithms & Data Structures" → Stanford Coursera PDF
     * "Computer Science and Programming using Python" → MITx 6.00 PDF
     * "C# Programming" → Coursera C# PDF (new certificate added)
     * "C++ Programming" → Coursera C++ PDF (new certificate added)
+    * "Data Structure and OOP" → Data Structure Certificate PDF (new certificate added)
   - Implemented CV download button in hero section
   - Added download icons with hover effects to all downloadable items
   - Enhanced education achievements section with comprehensive download system
