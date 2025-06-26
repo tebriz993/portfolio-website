@@ -78,9 +78,7 @@ export function ContactSection() {
             <div>
               <h3 className="text-xl font-bold mb-6">Let's Work Together</h3>
               <p className="text-muted-foreground mb-8">
-                I'm always interested in discussing new opportunities,
-                interesting projects, and innovative solutions. Whether you have
-                a question or just want to say hi, feel free to reach out.
+                I'm always interested in discussing new opportunities, interesting projects, and innovative solutions. Whether you have a question or just want to say hi, feel free to reach out — you’ll receive a response within 12 hours. Let's create something amazing together!
               </p>
               <img
                 src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600"

@@ -3,7 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Award, BookOpen, ChevronDown, ChevronUp } from "lucide-react";
 
-// Məlumatlar olduğu kimi qalır, səhv burada deyil
+
 const education = [
   {
     title: "Advanced Back-end Development",
