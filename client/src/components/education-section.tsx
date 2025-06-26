@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Award, BookOpen, ChevronDown, ChevronUp } from "lucide-react";
+import { Award, BookOpen, ChevronDown, ChevronUp, Download } from "lucide-react";
 
 
 const education = [
@@ -34,6 +34,8 @@ const achievements = [
     organization: "International British Congress - London, UK",
     period: "07/2024",
     type: "publication",
+    downloadLink: "/assets/Article-AI-by-Tabriz-Latifov.pdf",
+    downloadName: "Article-AI-by-Tabriz-Latifov.pdf",
   },
   {
     title: "Published Research",
@@ -64,6 +66,8 @@ const achievements = [
     organization: "CISCO Networking Academy",
     period: "08/2023",
     type: "certificate",
+    downloadLink: "/assets/CISCO-Certificate.png",
+    downloadName: "CISCO-Certificate.png",
   },
   {
     title: "Climate Change Hackathon COP29",
@@ -98,6 +102,15 @@ const achievements = [
 export function EducationSection() {
   const [isEducationExpanded, setIsEducationExpanded] = useState(true);
   const [isAchievementsExpanded, setIsAchievementsExpanded] = useState(true);
+
+  const downloadFile = (url: string, filename: string) => {
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   return (
     <section className="section-padding">
@@ -187,9 +200,22 @@ export function EducationSection() {
                               : "Certificate"}
                           </Badge>
                         </div>
-                        <p className="text-primary font-medium">
-                          {achievement.description}
-                        </p>
+                        <div className="text-primary font-medium">
+                          {(achievement as any).downloadLink ? (
+                            <div className="flex items-center justify-between">
+                              <span>{achievement.description}</span>
+                              <button
+                                onClick={() => downloadFile((achievement as any).downloadLink, (achievement as any).downloadName)}
+                                className="ml-2 p-2 rounded-md hover:bg-muted transition-colors"
+                                title="Download"
+                              >
+                                <Download className="h-4 w-4" />
+                              </button>
+                            </div>
+                          ) : (
+                            achievement.description
+                          )}
+                        </div>
                         <p className="text-muted-foreground">
                           {achievement.organization}
                         </p>

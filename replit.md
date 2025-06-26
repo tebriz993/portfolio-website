@@ -111,10 +111,12 @@ The application follows a full-stack monorepo architecture with clear separation
 - **Bundle analysis**: Production bundle optimization
 
 ## Changelog
-- June 26, 2025. Added CV download functionality
-  - Implemented "Download CV" button functionality in hero section
-  - Added Tabriz Latifov CV PDF file to public assets
-  - Created downloadCV function for automatic file download
+- June 26, 2025. Added document download functionality
+  - Made "Will artificial intelligence replace humans?" downloadable (Article PDF)
+  - Made "JavaScript Certificate" downloadable (CISCO Certificate PNG)
+  - Added download icons and functionality to education achievements
+  - Implemented CV download button in hero section
+  - Added multiple PDF and image files to public assets
 - June 24, 2025. Initial setup
 
 ## User Preferences
