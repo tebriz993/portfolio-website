@@ -14,6 +14,15 @@ export function HeroSection() {
     }
   };
 
+  const downloadCV = () => {
+    const link = document.createElement('a');
+    link.href = '/assets/Tabriz-Latifov-CV.pdf';
+    link.download = 'Tabriz-Latifov-CV.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <section className="pt-24 pb-16 gradient-bg">
       <div className="container-custom">
@@ -57,7 +66,7 @@ export function HeroSection() {
             <Button onClick={scrollToContact} size="lg" className="px-8">
               Get In Touch
             </Button>
-            <Button variant="outline" size="lg" className="px-8">
+            <Button variant="outline" size="lg" className="px-8" onClick={downloadCV}>
               <Download className="mr-2 h-4 w-4" />
               Download CV
             </Button>
