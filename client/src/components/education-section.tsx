@@ -1,8 +1,7 @@
 import { useState } from "react";
-import { Link } from "wouter";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Award, BookOpen, ChevronDown, ChevronUp, ExternalLink } from "lucide-react";
+import { Award, BookOpen, ChevronDown, ChevronUp } from "lucide-react";
 
 // Məlumatlar olduğu kimi qalır, səhv burada deyil
 const education = [
@@ -35,7 +34,6 @@ const achievements = [
     organization: "International British Congress - London, UK",
     period: "07/2024",
     type: "publication",
-    linkTo: "/ai-article",
   },
   {
     title: "Published Research",
@@ -189,19 +187,9 @@ export function EducationSection() {
                               : "Certificate"}
                           </Badge>
                         </div>
-                        <div className="text-primary font-medium">
-                          {(achievement as any).linkTo ? (
-                            <Link
-                              href={(achievement as any).linkTo}
-                              className="hover:text-primary/80 transition-colors inline-flex items-center gap-2 group"
-                            >
-                              {achievement.description}
-                              <ExternalLink className="h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity" />
-                            </Link>
-                          ) : (
-                            achievement.description
-                          )}
-                        </div>
+                        <p className="text-primary font-medium">
+                          {achievement.description}
+                        </p>
                         <p className="text-muted-foreground">
                           {achievement.organization}
                         </p>

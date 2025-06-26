@@ -111,11 +111,6 @@ The application follows a full-stack monorepo architecture with clear separation
 - **Bundle analysis**: Production bundle optimization
 
 ## Changelog
-- June 26, 2025. Added AI article page and clickable research link
-  - Created dedicated article page for "Will artificial intelligence replace humans?" research
-  - Made the research title clickable in the Certifications & Achievements section
-  - Added routing support for the new article page with back navigation
-  - Enhanced user experience with article presentation and author information
 - June 24, 2025. Initial setup
 
 ## User Preferences
