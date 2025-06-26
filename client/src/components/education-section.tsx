@@ -13,6 +13,13 @@ const education = [
     badge: "100% Scholarship",
   },
   {
+    title: "Advanced Front-end Development",
+    institution: "MyMentorship and Development Agency",
+    description: "HTML, CSS, JS, TS, React.js",
+    period: "06/2024 - 09/2024",
+    badge: "100% Scholarship",
+  },
+  {
     title: "Back-end Development",
     institution: "Software Village",
     description: "C#, .NET, MVC, MVVM, API",
@@ -54,11 +61,31 @@ const achievements = [
     type: "publication",
   },
   {
-    title: "Advanced Front-end Development",
-    description: "Certificate",
-    organization: "MyMentorship and Development Agency",
-    period: "06/2024 - 09/2024",
+    title: "Algorithms & Data Structures",
+    description: "Sorting, Searching, Divide and Conquer",
+    organization: "Stanford University (Coursera)",
+    period: "Completed",
     type: "certificate",
+    downloadLink: "/assets/Stanford-Algorithms-Coursera.pdf",
+    downloadName: "Stanford-Algorithms-Coursera.pdf",
+  },
+  {
+    title: "C# Programming",
+    description: "Certificate",
+    organization: "Coursera",
+    period: "Completed",
+    type: "certificate",
+    downloadLink: "/assets/Coursera-CSharp.pdf",
+    downloadName: "Coursera-CSharp.pdf",
+  },
+  {
+    title: "Data Structure, OOP and Algorithms",
+    description: "Certificate",
+    organization: "Programming Academy",
+    period: "Completed",
+    type: "certificate",
+    downloadLink: "/assets/Data-Structure-Certificate.pdf",
+    downloadName: "Data-Structure-Certificate.pdf",
   },
   {
     title: "JavaScript",
@@ -77,15 +104,6 @@ const achievements = [
     type: "award",
   },
   {
-    title: "Algorithms & Data Structures",
-    description: "Sorting, Searching, Divide and Conquer",
-    organization: "Stanford University (Coursera)",
-    period: "Completed",
-    type: "certificate",
-    downloadLink: "/assets/Stanford-Algorithms-Coursera.pdf",
-    downloadName: "Stanford-Algorithms-Coursera.pdf",
-  },
-  {
     title: "Computer Science and Programming using Python",
     description: "Sorting, Searching, Divide and Conquer",
     organization: "Massachusetts Institute of Technology (EDX)",
@@ -95,15 +113,6 @@ const achievements = [
     downloadName: "MITx-6.00.pdf",
   },
   {
-    title: "C# Programming",
-    description: "Certificate",
-    organization: "Coursera",
-    period: "Completed",
-    type: "certificate",
-    downloadLink: "/assets/Coursera-CSharp.pdf",
-    downloadName: "Coursera-CSharp.pdf",
-  },
-  {
     title: "C++ Programming",
     description: "Certificate",
     organization: "Coursera",
@@ -111,15 +120,6 @@ const achievements = [
     type: "certificate",
     downloadLink: "/assets/Coursera-CPlusPlus.pdf",
     downloadName: "Coursera-CPlusPlus.pdf",
-  },
-  {
-    title: "Data Structure and OOP",
-    description: "Certificate",
-    organization: "Programming Academy",
-    period: "Completed",
-    type: "certificate",
-    downloadLink: "/assets/Data-Structure-Certificate.pdf",
-    downloadName: "Data-Structure-Certificate.pdf",
   },
   {
     title: "Junction X Hackhathon",
@@ -165,7 +165,7 @@ export function EducationSection() {
               </div>
               <div
                 className="overflow-hidden transition-all duration-500 ease-in-out"
-                style={{ maxHeight: isEducationExpanded ? '2000px' : '0' }} // Dəyər artırıldı
+                style={{ maxHeight: isEducationExpanded ? '3000px' : '0' }}
               >
                 <div className="space-y-6 pt-1">
                   {education.map((edu, index) => (
@@ -205,7 +205,7 @@ export function EducationSection() {
               </div>
               <div
                 className="overflow-hidden transition-all duration-500 ease-in-out"
-                style={{ maxHeight: isAchievementsExpanded ? '2000px' : '0' }} // Dəyər artırıldı
+                style={{ maxHeight: isAchievementsExpanded ? '4000px' : '0' }}
               >
                 <div className="space-y-6 pt-1">
                   {achievements.map((achievement, index) => (
