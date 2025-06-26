@@ -4,7 +4,7 @@
 import { Button } from "@/components/ui/button";
 import { Github, Linkedin, Mail, Download } from "lucide-react";
 import { TypeAnimation } from "react-type-animation"; // YENİ IMPORT
-import tabrizPhoto from "@assets/MyPC3_1750782360229.png";
+import tabrizPhoto from "@/assets/profile-image.png";
 
 export function HeroSection() {
   const scrollToContact = () => {
