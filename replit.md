@@ -111,12 +111,17 @@ The application follows a full-stack monorepo architecture with clear separation
 - **Bundle analysis**: Production bundle optimization
 
 ## Changelog
-- June 26, 2025. Added document download functionality
-  - Made "Will artificial intelligence replace humans?" downloadable (Article PDF)
-  - Made "JavaScript Certificate" downloadable (CISCO Certificate PNG)
-  - Added download icons and functionality to education achievements
+- June 26, 2025. Enhanced certificate download functionality
+  - Added download functionality for 6 certificates and documents:
+    * "Will artificial intelligence replace humans?" → Article PDF
+    * "JavaScript Certificate" → CISCO Certificate PNG
+    * "Algorithms & Data Structures" → Stanford Coursera PDF
+    * "Computer Science and Programming using Python" → MITx 6.00 PDF
+    * "C# Programming" → Coursera C# PDF (new certificate added)
+    * "C++ Programming" → Coursera C++ PDF (new certificate added)
   - Implemented CV download button in hero section
-  - Added multiple PDF and image files to public assets
+  - Added download icons with hover effects to all downloadable items
+  - Enhanced education achievements section with comprehensive download system
 - June 24, 2025. Initial setup
 
 ## User Preferences
